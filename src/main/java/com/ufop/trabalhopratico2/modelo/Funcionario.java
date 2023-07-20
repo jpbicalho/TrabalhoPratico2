@@ -20,4 +20,8 @@ public class Funcionario extends Pessoa {
     public int getMatricula(){
         return matricula;
     }
+    @Override
+    public String toString(){
+        return super.toString() + "Matricula: " + matricula;
+    }
 }

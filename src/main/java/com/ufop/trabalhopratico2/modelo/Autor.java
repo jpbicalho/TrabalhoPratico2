@@ -20,4 +20,9 @@ public class Autor extends Pessoa{
     public String getBiografia(){
         return biografia;
     }
+    @Override
+    public String toString(){
+        return super.toString() + "Biografia: " + biografia;
+    }
+    
 }

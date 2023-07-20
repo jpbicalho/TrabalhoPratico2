@@ -20,4 +20,8 @@ public class Usuario extends Pessoa {
     public int getRegistroAcademico(){
         return registroAcademico;
     }
+    @Override
+    public String toString(){
+        return super.toString() + "Registro Academico: " + registroAcademico;
+    }
 }

@@ -32,11 +32,14 @@ public class Pessoa {
         return sobrenome;
     }
     
-    
     public Pessoa(int i,String name,String nickname){
         id = i;
         nome =  name;
         sobrenome = nickname;
     }
             
+    @Override
+    public String toString(){
+        return "Nome: " + nome + "Sobrenome: "+ sobrenome +"Id: " + id; 
+    }
 }
