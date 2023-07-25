@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.ufop.trabalhopratico2.modelo;
+package Modelo;
 
 /**
  *
@@ -34,6 +34,25 @@ public class Emprestimo {
     }
     public void setIdLivro(int id){
         idLivro = id;
+    }
+    public void setDataEmprestimos(Data date){
+        
+    }
+    
+    public int getId(){
+        return id;
+    }
+    public int getIdFuncionario(){
+        return idFuncionario;
+    }
+    public int getIdUsuario(){
+        return idUsuario;
+    }
+    public int getIdLivro(){
+        return idLivro;
+    }
+    public Data getData(){
+        return dataEmprestimo;
     }
     
 }
