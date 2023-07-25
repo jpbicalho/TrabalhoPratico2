@@ -19,10 +19,10 @@ public class Dados {
     /*
     Classe que armazena as informações criadas
        */
-    public  static List<Autor> autores = new ArrayList<>();
-    public static List<Funcionario> funcionarios = new ArrayList<>();
-    public static List<Usuario> users = new ArrayList<>();
-    public static List<Livro> livros = new ArrayList<>();
+    public  static List<Autor> autores = new ArrayList<>();//dao feito 
+    public static List<Funcionario> funcionarios = new ArrayList<>();//dao feito 
+    public static List<Usuario> users = new ArrayList<>();//dao feito
+    public static List<Livro> livros = new ArrayList<>();//dao feito 
     public static List<Categoria> categorias = new ArrayList<>();
-    public static List<Emprestimo> emprestimos = new ArrayList<>();
+    public static List<Emprestimo> emprestimos = new ArrayList<>();//dao feito
 }

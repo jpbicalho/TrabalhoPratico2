@@ -10,7 +10,7 @@ package Modelo;
  */
 public class Usuario extends Pessoa {
     private int registroAcademico;
-    Usuario(int i,String name,String nickname,int reg){
+    public Usuario(int i,String name,String nickname,int reg){
         super(i,name,nickname);
         registroAcademico = reg;
     }

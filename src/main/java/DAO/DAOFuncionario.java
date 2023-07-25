@@ -10,6 +10,9 @@ import java.util.List;
  * @author joaop
  */
 public class DAOFuncionario implements DAOInterface<Funcionario> {
+    
+    public DAOFuncionario(){
+    }
     @Override
     public void incluir(Funcionario func){
         Dados.Dados.funcionarios.add(func);
