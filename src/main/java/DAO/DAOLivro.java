@@ -27,7 +27,12 @@ public class DAOLivro implements DAOInterface<Livro>{
     }
     @Override
     public void atualizar(Livro t){
-        Dados.Dados.livros.set(t.getId(),t);
+        //Dados.Dados.livros.set(t.getId(),t);
+        for(int i = 0; i < Dados.Dados.livros.size();i++){
+            if(Dados.Dados.livros.get(i).getTitulo().equals(t.getTitulo()) ){
+                Dados.Dados.livros.set(i, t);
+            }
+        }
     }
     @Override
     public void remover(Livro t){

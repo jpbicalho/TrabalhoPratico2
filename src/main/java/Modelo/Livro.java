@@ -13,8 +13,8 @@ import java.util.List;
 public class Livro {
     private int id;
     private String titulo;
-    private List<Autor> autores;
-    private List<Categoria> categorias;
+    private List<Autor> autores = new ArrayList();
+    private List<Categoria> categorias = new ArrayList();
     public Livro(int nId,String title){
         id = nId;
         titulo = title;
@@ -32,6 +32,15 @@ public class Livro {
     }
     public String getTitulo(){
         return titulo;   
+    }
+    public void AdicionaAutor(Autor nAutor){
+        autores.add(nAutor);
+    }
+    public void AdicionaCategoria(Categoria nCat){
+        categorias.add(nCat);
+    }
+    public List<Autor> getAutores(){
+        return autores;
     }
     
 }

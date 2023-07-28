@@ -1,7 +1,7 @@
 package DAO;
 
 
-import DAO.DAOInterface;
+
 import Modelo.Categoria;
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * @author joaop
  */
 public class DAOCategoria implements DAOInterface<Categoria>{
-     DAOCategoria(){}
+    public DAOCategoria(){}
     @Override
     public void incluir(Categoria func){
         Dados.Dados.categorias.add(func);
@@ -30,7 +30,18 @@ public class DAOCategoria implements DAOInterface<Categoria>{
         }
         return null;
    
+    }
+    
+    public Categoria localizar(String nome){
+        for(int i=0;i<Dados.Dados.categorias.size();i++){
+            if(Dados.Dados.categorias.get(i).getTitulo() == nome){
+                return Dados.Dados.categorias.get(i);
+            }
+        }
+        return null;
+   
     } 
+    
     @Override
     public void atualizar(Categoria t){
         Dados.Dados.categorias.set(t.getId(),t);

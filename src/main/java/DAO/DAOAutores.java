@@ -12,16 +12,20 @@ import java.util.List;
  * @author joaop
  */
 public class DAOAutores implements DAOInterface<Autor>{
-     DAOAutores(){}
+    public DAOAutores(){};
     @Override
     public void incluir(Autor func){
         Dados.Dados.autores.add(func);
     }
     
     @Override
-    public Autor localizar(int id){
+    public Autor localizar(int ind){
+        return Dados.Dados.autores.get(ind);
+    }
+    
+    public Autor localizar(String name){
         for(int i=0;i<Dados.Dados.autores.size();i++){
-            if(Dados.Dados.autores.get(i).getId() == id){
+            if(Dados.Dados.autores.get(i).getNome() == name){
                 return Dados.Dados.autores.get(i);
             }
         }

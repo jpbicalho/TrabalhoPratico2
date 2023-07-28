@@ -13,7 +13,7 @@ import java.util.List;
  * @author joaop
  */
 public class DAOUsuario implements DAOInterface<Usuario>{
-    DAOUsuario(){}
+    public DAOUsuario(){}
     @Override
     public void incluir(Usuario func){
         Dados.Dados.users.add(func);

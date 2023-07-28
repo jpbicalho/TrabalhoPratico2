@@ -4,22 +4,32 @@
  */
 package Principal;
 
+import DAO.DAOAutores;
+import DAO.DAOCategoria;
 import DAO.DAOFuncionario;
+import DAO.DAOLivro;
+import DAO.DAOUsuario;
 import Modelo.Usuario;
 import Dados.Dados;
+import Modelo.Autor;
+import Modelo.Categoria;
 import Modelo.Funcionario;
+import Modelo.Livro;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author joaop
  */
 public class TelaADM extends javax.swing.JFrame {
-
+    private Livro livroAux;
     /**
      * Creates new form TelaADM
      */
     public TelaADM() {
         initComponents();
+        
     }
 
     /**
@@ -47,6 +57,22 @@ public class TelaADM extends javax.swing.JFrame {
         IdCampo1 = new javax.swing.JTextField();
         CriarFunc = new javax.swing.JToggleButton();
         criacao = new javax.swing.JTextField();
+        LivroCreates = new javax.swing.JFrame();
+        titulo = new javax.swing.JLabel();
+        idText = new javax.swing.JTextField();
+        tituloTXTBox = new javax.swing.JTextField();
+        listaAutores = new javax.swing.JComboBox<>();
+        autoresTxt = new javax.swing.JLabel();
+        botaoAddAutor = new javax.swing.JButton();
+        testei = new javax.swing.JLabel();
+        AutorCreates = new javax.swing.JFrame();
+        titulp = new javax.swing.JLabel();
+        tNome = new javax.swing.JTextField();
+        tSobrenome = new javax.swing.JTextField();
+        tBio = new javax.swing.JTextField();
+        bCadastro = new javax.swing.JButton();
+        tId = new javax.swing.JTextField();
+        testeAutor = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         OpcoesCadastroLista = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -219,13 +245,157 @@ public class TelaADM extends javax.swing.JFrame {
                 .addGap(63, 63, 63))
         );
 
+        titulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        titulo.setText("Informações dos Livros");
+
+        idText.setText("ID");
+        idText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idTextActionPerformed(evt);
+            }
+        });
+
+        tituloTXTBox.setText("Título");
+        tituloTXTBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tituloTXTBoxActionPerformed(evt);
+            }
+        });
+
+        listaAutores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Autores" }));
+        listaAutores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaAutoresActionPerformed(evt);
+            }
+        });
+
+        autoresTxt.setText("Nenhum autor foi selecionado");
+
+        botaoAddAutor.setText("+");
+        botaoAddAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAddAutorActionPerformed(evt);
+            }
+        });
+
+        testei.setText("....");
+
+        javax.swing.GroupLayout LivroCreatesLayout = new javax.swing.GroupLayout(LivroCreates.getContentPane());
+        LivroCreates.getContentPane().setLayout(LivroCreatesLayout);
+        LivroCreatesLayout.setHorizontalGroup(
+            LivroCreatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LivroCreatesLayout.createSequentialGroup()
+                .addContainerGap(65, Short.MAX_VALUE)
+                .addGroup(LivroCreatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(testei, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tituloTXTBox, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(LivroCreatesLayout.createSequentialGroup()
+                        .addGroup(LivroCreatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(autoresTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                            .addComponent(listaAutores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botaoAddAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(81, 81, 81))
+        );
+        LivroCreatesLayout.setVerticalGroup(
+            LivroCreatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LivroCreatesLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
+                .addComponent(idText)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tituloTXTBox, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(LivroCreatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listaAutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoAddAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(autoresTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(testei)
+                .addGap(79, 79, 79))
+        );
+
+        titulp.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        titulp.setText("Criando um autor...");
+
+        tNome.setText("Nome");
+        tNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tNomeActionPerformed(evt);
+            }
+        });
+
+        tSobrenome.setText("Sobrenome");
+        tSobrenome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tSobrenomeActionPerformed(evt);
+            }
+        });
+
+        tBio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tBio.setText("Biografia");
+
+        bCadastro.setText("Cadastrar");
+        bCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCadastroActionPerformed(evt);
+            }
+        });
+
+        tId.setText("ID");
+        tId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tIdActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AutorCreatesLayout = new javax.swing.GroupLayout(AutorCreates.getContentPane());
+        AutorCreates.getContentPane().setLayout(AutorCreatesLayout);
+        AutorCreatesLayout.setHorizontalGroup(
+            AutorCreatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AutorCreatesLayout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addGroup(AutorCreatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tBio)
+                    .addComponent(titulp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tNome)
+                    .addComponent(tSobrenome)
+                    .addComponent(bCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tId)
+                    .addComponent(testeAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
+        );
+        AutorCreatesLayout.setVerticalGroup(
+            AutorCreatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AutorCreatesLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(titulp)
+                .addGap(18, 18, 18)
+                .addComponent(tNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tBio, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bCadastro)
+                .addGap(18, 18, 18)
+                .addComponent(testeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel1.setText("Modo administrador");
 
         OpcoesCadastroLista.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
-        OpcoesCadastroLista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionario", "Usuario", "Emprestimo", "Livro", "Autores", "Categorias de livro" }));
+        OpcoesCadastroLista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionario", "Usuario", "Livro", "Autores", "Categorias de livro" }));
         OpcoesCadastroLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OpcoesCadastroListaActionPerformed(evt);
@@ -247,9 +417,8 @@ public class TelaADM extends javax.swing.JFrame {
                 .addContainerGap(94, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                        .addComponent(OpcoesCadastroLista, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                    .addComponent(OpcoesCadastroLista, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(93, 93, 93))
         );
         layout.setVerticalGroup(
@@ -280,6 +449,16 @@ public class TelaADM extends javax.swing.JFrame {
             FuncCreates.setVisible((true));
             FuncCreates.pack();
         }
+        if(cadastro.equals("Livro")){
+            LivroCreates.setVisible(true);
+            LivroCreates.pack();
+            
+        }
+        if(cadastro.equals("Autores")){
+            AutorCreates.setVisible(true);
+            AutorCreates.pack();
+        }
+            
     }//GEN-LAST:event_OpcoesCadastroListaActionPerformed
 
     private void sobrenomeCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobrenomeCampoActionPerformed
@@ -309,6 +488,8 @@ public class TelaADM extends javax.swing.JFrame {
         int reg = Integer.valueOf(nReg);
         
         Usuario user = new Usuario(id,name,nick,reg);
+        DAOUsuario controller = new DAOUsuario();
+        controller.incluir(user);
         String conf = user.toString();
         mostraUser.setVisible(true);
         mostraUser.setText(conf);
@@ -332,6 +513,7 @@ public class TelaADM extends javax.swing.JFrame {
 
     private void CriarFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CriarFuncActionPerformed
         // TODO add your handling code here:
+        //criacao de um novo funcionario 
         String nId = IdCampo1.getText();
         String nReg = RegCampo1.getText();
         String nome = nomeCampo1.getText();
@@ -356,6 +538,66 @@ public class TelaADM extends javax.swing.JFrame {
 
     }//GEN-LAST:event_mostraUserActionPerformed
 
+    private void idTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idTextActionPerformed
+
+    private void tituloTXTBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloTXTBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tituloTXTBoxActionPerformed
+
+    private void tNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tNomeActionPerformed
+
+    private void tSobrenomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tSobrenomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tSobrenomeActionPerformed
+
+    private void bCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastroActionPerformed
+        // TODO add your handling code here:
+        
+        String nome = tNome.getText();
+        String sobrenome = tSobrenome.getText();
+        String bio = tBio.getText();
+        String id = tId.getText();
+        int nId = Integer.valueOf(id) ;
+        Autor func = new Autor(nId,nome,sobrenome,bio);
+        DAOAutores controller = new DAOAutores();
+        controller.incluir(func);
+        String total="";
+        List<Autor> lista = controller.getLista();
+        for(int i = 0;i<lista.size();i++){
+            total = total + lista.get(i).toString();
+        }
+        testeAutor.setText(total);
+        listaAutores.addItem(nome + " "+ sobrenome);
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_bCadastroActionPerformed
+
+    private void tIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tIdActionPerformed
+
+    private void listaAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaAutoresActionPerformed
+        // TODO add your handling code here:  
+    }//GEN-LAST:event_listaAutoresActionPerformed
+
+    private void botaoAddAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAddAutorActionPerformed
+        // TODO add your handling code here:
+        //quando apertar o botao,o objeto vai ser adicionado
+        int posicao = listaAutores.getSelectedIndex()-1;
+        DAOAutores aController = new DAOAutores();        
+        Autor aux = aController.localizar(posicao);
+        livroAux = new Livro(0,"");
+        livroAux.AdicionaAutor(aux);
+        autoresTxt.setText("Adicionado: "+aux.getNome());
+    }//GEN-LAST:event_botaoAddAutorActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -392,24 +634,40 @@ public class TelaADM extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame AutorCreates;
     private javax.swing.JToggleButton CriarFunc;
     private javax.swing.JToggleButton CriarUser;
     private javax.swing.JFrame FuncCreates;
     private javax.swing.JTextField IdCampo;
     private javax.swing.JTextField IdCampo1;
+    private javax.swing.JFrame LivroCreates;
     private javax.swing.JComboBox<String> OpcoesCadastroLista;
     private javax.swing.JTextField RegCampo;
     private javax.swing.JTextField RegCampo1;
     private javax.swing.JFrame UserCreates;
+    private javax.swing.JLabel autoresTxt;
+    private javax.swing.JButton bCadastro;
+    private javax.swing.JButton botaoAddAutor;
     private javax.swing.JTextField criacao;
     private javax.swing.JLabel dados;
     private javax.swing.JLabel dados1;
+    private javax.swing.JTextField idText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JComboBox<String> listaAutores;
     private javax.swing.JTextField mostraUser;
     private javax.swing.JTextField nomeCampo;
     private javax.swing.JTextField nomeCampo1;
     private javax.swing.JTextField sobrenomeCampo;
     private javax.swing.JTextField sobrenomeCampo1;
+    private javax.swing.JTextField tBio;
+    private javax.swing.JTextField tId;
+    private javax.swing.JTextField tNome;
+    private javax.swing.JTextField tSobrenome;
+    private javax.swing.JLabel testeAutor;
+    private javax.swing.JLabel testei;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JTextField tituloTXTBox;
+    private javax.swing.JLabel titulp;
     // End of variables declaration//GEN-END:variables
 }
