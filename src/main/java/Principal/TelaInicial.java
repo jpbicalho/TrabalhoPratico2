@@ -27,27 +27,20 @@ public class TelaInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         txtEntrada = new javax.swing.JLabel();
-        BotaoUser = new javax.swing.JToggleButton();
-        botaoModoADM = new javax.swing.JToggleButton();
+        lModos = new javax.swing.JComboBox<>();
+        bConfirma = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtEntrada.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        txtEntrada.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtEntrada.setText("Selecione o modo de entrada");
 
-        BotaoUser.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        BotaoUser.setText("Modo User");
-        BotaoUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoUserActionPerformed(evt);
-            }
-        });
+        lModos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Modo Funcionário", "Modo Administrador" }));
 
-        botaoModoADM.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        botaoModoADM.setText("Modo Administrador");
-        botaoModoADM.addActionListener(new java.awt.event.ActionListener() {
+        bConfirma.setText("Confirmar");
+        bConfirma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoModoADMActionPerformed(evt);
+                bConfirmaActionPerformed(evt);
             }
         });
 
@@ -55,41 +48,39 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtEntrada)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botaoModoADM, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lModos, 0, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(98, 98, 98))
+                        .addComponent(bConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(188, 188, 188)
-                .addComponent(txtEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoModoADM)
-                    .addComponent(BotaoUser))
-                .addGap(232, 232, 232))
+                .addGap(37, 37, 37)
+                .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lModos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bConfirma))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotaoUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoUserActionPerformed
+    private void bConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BotaoUserActionPerformed
-
-    private void botaoModoADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoModoADMActionPerformed
-        // TODO add your handling code here:
-        TelaADM telaADM= new TelaADM();
-        telaADM.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_botaoModoADMActionPerformed
+        int mode = lModos.getSelectedIndex();
+        if (mode == 2){
+            TelaAdm adm= new TelaAdm();
+            adm.setVisible(true);
+        }
+    }//GEN-LAST:event_bConfirmaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,8 +119,8 @@ public class TelaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton BotaoUser;
-    private javax.swing.JToggleButton botaoModoADM;
+    private javax.swing.JButton bConfirma;
+    private javax.swing.JComboBox<String> lModos;
     private javax.swing.JLabel txtEntrada;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,12 +23,9 @@ public class DAOCategoria implements DAOInterface<Categoria>{
     
     @Override
     public Categoria localizar(int id){
-        for(int i=0;i<Dados.Dados.categorias.size();i++){
-            if(Dados.Dados.categorias.get(i).getId() == id){
-                return Dados.Dados.categorias.get(i);
-            }
-        }
-        return null;
+        if (id >= 0) {
+            return Dados.Dados.categorias.get(id);
+        }else return null;
    
     }
     
