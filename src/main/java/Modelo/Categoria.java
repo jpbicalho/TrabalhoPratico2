@@ -4,6 +4,8 @@
  */
 package Modelo;
 
+import static Dados.Dados.contador;
+
 /**
  *
  * @author joaop
@@ -12,8 +14,8 @@ public class Categoria {
     private int id;
     private String titulo;
     
-    public Categoria(int nId,String title){
-        id = nId;
+    public Categoria(String title){
+        id = contador; contador++;
         titulo = title;
     }
     public int getId(){

@@ -4,6 +4,7 @@
  */
 package DAO;
 import Modelo.Funcionario;
+import java.util.ArrayList;
 import java.util.List;
 /**
  *
@@ -19,13 +20,26 @@ public class DAOFuncionario implements DAOInterface<Funcionario> {
     }
     @Override
     public Funcionario localizar(int id){
-        for(int i=0;i<Dados.Dados.funcionarios.size();i++){
-            if(Dados.Dados.funcionarios.get(i).getMatricula() == id){
+        
+        return Dados.Dados.funcionarios.get(id);
+    }
+    public Funcionario localizar(Funcionario func){
+        var mat = func.getMatricula();
+        for(int i=0;i< Dados.Dados.funcionarios.size() ;i++){
+            if(mat == Dados.Dados.funcionarios.get(i).getMatricula()){
                 return Dados.Dados.funcionarios.get(i);
             }
         }
-        Funcionario ret = new Funcionario(0,"nulo","nulo",0);
-        return ret;
+        return null;
+    }
+    public Funcionario localizar(String nome){
+        for(int i=0;i< Dados.Dados.funcionarios.size();i++){
+            if(nome == Dados.Dados.funcionarios.get(i).getNome()){
+                return Dados.Dados.funcionarios.get(i);
+        }
+        
+        }
+        return null;
     }
     @Override
     public void atualizar(Funcionario t){
@@ -34,6 +48,9 @@ public class DAOFuncionario implements DAOInterface<Funcionario> {
     @Override
     public void remover(Funcionario t){
         Dados.Dados.funcionarios.remove(t);
+    }
+    public boolean remove(Funcionario t){
+        return Dados.Dados.funcionarios.remove(t);
     }
     @Override
     public List<Funcionario> getLista(){

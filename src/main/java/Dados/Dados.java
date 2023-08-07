@@ -25,4 +25,5 @@ public class Dados {
     public static List<Livro> livros = new ArrayList<>();//dao feito 
     public static List<Categoria> categorias = new ArrayList<>();
     public static List<Emprestimo> emprestimos = new ArrayList<>();//dao feito
+    public static int contador;
 }

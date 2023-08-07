@@ -29,6 +29,15 @@ public class DAOUsuario implements DAOInterface<Usuario>{
         return null;
    
     } 
+    public Usuario localizar(String nome){
+        for(int i=0;i< Dados.Dados.users.size();i++){
+            if(nome == Dados.Dados.users.get(i).getNome()){
+                return Dados.Dados.users.get(i);
+        }
+        
+        }
+        return null;
+    }
     @Override
     public void atualizar(Usuario t){
         Dados.Dados.users.set(t.getId(),t);

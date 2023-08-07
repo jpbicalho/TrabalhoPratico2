@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
+import static Dados.Dados.contador;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class Livro {
     private String titulo;
     private List<Autor> autores = new ArrayList();
     private List<Categoria> categorias = new ArrayList();
-    public Livro(int nId,String title){
-        id = nId;
+    public Livro(String title){
+        id = contador; contador++;
         titulo = title;
         autores = new ArrayList<>();
         categorias = new ArrayList<>();
@@ -35,6 +36,16 @@ public class Livro {
     }
     public void AdicionaAutor(Autor nAutor){
         autores.add(nAutor);
+    }
+    public void CopiaAutores(List<Autor> lAutor){
+        for(Autor element : lAutor){
+            AdicionaAutor(element);
+        }
+    }
+    public void CopiaCategorias(ArrayList<Categoria> lCategoria){
+        for(Categoria element : lCategoria){
+            AdicionaCategoria(element);
+        }
     }
     public void AdicionaCategoria(Categoria nCat){
         categorias.add(nCat);

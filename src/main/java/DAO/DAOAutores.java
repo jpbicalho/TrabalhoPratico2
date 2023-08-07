@@ -5,6 +5,7 @@
 package DAO;
 
 import Modelo.Autor;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,7 +44,7 @@ public class DAOAutores implements DAOInterface<Autor>{
     }
     
     @Override
-    public List<Autor> getLista(){
-        return Dados.Dados.autores;
+    public ArrayList<Autor> getLista(){
+        return (ArrayList<Autor>) Dados.Dados.autores;
     }
 }

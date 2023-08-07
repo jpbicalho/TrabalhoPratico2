@@ -4,11 +4,13 @@
  */
 package Modelo;
 
+import static Dados.Dados.contador;
+
 /**
  *
  * @author joaop
  */
-public class Pessoa {
+public class Pessoa implements Cloneable{
     private int id;
     private String nome;
     private String sobrenome;
@@ -32,14 +34,15 @@ public class Pessoa {
         return sobrenome;
     }
     
-    public Pessoa(int i,String name,String nickname){
-        id = i;
+    public Pessoa(String name,String nickname){
+        id = contador; contador++;
         nome =  name;
         sobrenome = nickname;
     }
             
     @Override
     public String toString(){
-        return "Nome: " + nome + "\nSobrenome: "+ sobrenome +"\nId: " + id; 
+        return "Nome: " + nome + " Sobrenome: "+ sobrenome +" Id: " + id; 
     }
+    
 }

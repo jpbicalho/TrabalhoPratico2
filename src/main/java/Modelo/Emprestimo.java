@@ -4,6 +4,8 @@
  */
 package Modelo;
 
+import static Dados.Dados.contador;
+
 /**
  *
  * @author joaop
@@ -15,8 +17,8 @@ public class Emprestimo {
     private int idLivro;
     private Data dataEmprestimo;
     
-    public Emprestimo(int id1,int id2,int id3,int id4,Data date){
-        id = id1;
+    public Emprestimo(int id2,int id3,int id4,Data date){
+        id = contador; contador++;
         idFuncionario = id2;
         idUsuario = id3;
         idLivro = id4;

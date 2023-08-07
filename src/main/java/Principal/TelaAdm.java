@@ -7,10 +7,12 @@ package Principal;
 import DAO.DAOAutores;
 import DAO.DAOCategoria;
 import DAO.DAOFuncionario;
+import DAO.DAOLivro;
 import DAO.DAOUsuario;
 import Modelo.Autor;
 import Modelo.Categoria;
 import Modelo.Funcionario;
+import Modelo.Livro;
 import Modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ public class TelaAdm extends javax.swing.JFrame {
     public List<Categoria> CategoriaProv = new ArrayList<>();
     public TelaAdm() {
         initComponents();
+        
     }
 
     /**
@@ -46,25 +49,26 @@ public class TelaAdm extends javax.swing.JFrame {
         tNome = new javax.swing.JLabel();
         tSobrenome = new javax.swing.JLabel();
         tMatricula = new javax.swing.JLabel();
-        tId = new javax.swing.JLabel();
         cxNome = new javax.swing.JTextField();
         bCadastra = new javax.swing.JButton();
         cxMatricula = new javax.swing.JTextField();
         cxSobrenome = new javax.swing.JTextField();
-        cxId = new javax.swing.JTextField();
         tConfirma = new javax.swing.JLabel();
         pCadastraUser = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         cxUserSobrenome = new javax.swing.JTextField();
         cxUserRegistro = new javax.swing.JTextField();
-        cxUserId = new javax.swing.JTextField();
         cxUserNome = new javax.swing.JTextField();
         bUserCadastra = new javax.swing.JButton();
         tUserConfirma = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        pCategoria = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        cxCategoriaTitulo = new javax.swing.JTextField();
+        bCategoriaCadastra = new javax.swing.JButton();
+        tCategoriaConfirma = new javax.swing.JLabel();
+        pCadastraAutor = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -74,20 +78,9 @@ public class TelaAdm extends javax.swing.JFrame {
         cxBiografia = new javax.swing.JTextArea();
         bAutorCadastra = new javax.swing.JButton();
         tAutorConfirma = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        cxAutorId = new javax.swing.JTextField();
-        pCategoria = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        cxCategoriaTitulo = new javax.swing.JTextField();
-        cxCategoriaId = new javax.swing.JTextField();
-        bCategoriaCadastra = new javax.swing.JButton();
-        tCategoriaConfirma = new javax.swing.JLabel();
         pCadastraLivro = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         cxLivroNome = new javax.swing.JTextField();
-        cxLivroId = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         lLivrosAutores = new javax.swing.JComboBox<>();
         bLivroAddAutores = new javax.swing.JButton();
@@ -99,6 +92,22 @@ public class TelaAdm extends javax.swing.JFrame {
         bLivroCadastrar = new javax.swing.JButton();
         tLivroConfirma = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        lFuncionarioApaga = new javax.swing.JComboBox<>();
+        bFuncinonarioApaga = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        lAutorApaga = new javax.swing.JComboBox<>();
+        bAutorApaga = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        bUsuarioApaga = new javax.swing.JButton();
+        lUsuarioApaga = new javax.swing.JComboBox<>();
+        jPanel7 = new javax.swing.JPanel();
+        bCategoriaApaga = new javax.swing.JButton();
+        lCategoriaApaga = new javax.swing.JComboBox<>();
+        jPanel8 = new javax.swing.JPanel();
+        lLivroApaga = new javax.swing.JComboBox<>();
+        bLivroApaga = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,8 +116,6 @@ public class TelaAdm extends javax.swing.JFrame {
         tSobrenome.setText("Sobrenome");
 
         tMatricula.setText("Matrícula");
-
-        tId.setText("ID");
 
         bCadastra.setText("Cadastrar");
         bCadastra.addActionListener(new java.awt.event.ActionListener() {
@@ -130,20 +137,19 @@ public class TelaAdm extends javax.swing.JFrame {
                         .addGroup(pCadastroFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tSobrenome)
                             .addComponent(tMatricula)
-                            .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tNome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pCadastroFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cxNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pCadastroFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cxId, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                                .addComponent(cxMatricula)
+                                .addComponent(cxMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
                                 .addComponent(cxSobrenome))))
                     .addGroup(pCadastroFuncLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(pCadastroFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bCadastra, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(tConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(tConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pCadastroFuncLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bCadastra, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pCadastroFuncLayout.setVerticalGroup(
@@ -161,13 +167,9 @@ public class TelaAdm extends javax.swing.JFrame {
                 .addGroup(pCadastroFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tMatricula)
                     .addComponent(cxMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pCadastroFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tId)
-                    .addComponent(cxId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(bCadastra)
                 .addGap(18, 18, 18)
+                .addComponent(bCadastra)
+                .addGap(69, 69, 69)
                 .addComponent(tConfirma)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -179,8 +181,6 @@ public class TelaAdm extends javax.swing.JFrame {
         jLabel2.setText("Sobrenome");
 
         jLabel3.setText("Registro");
-
-        jLabel4.setText("ID");
 
         cxUserSobrenome.setText(" ");
 
@@ -207,12 +207,10 @@ public class TelaAdm extends javax.swing.JFrame {
                         .addGroup(pCadastraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(pCadastraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cxUserId, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                            .addComponent(cxUserRegistro)
+                            .addComponent(cxUserRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                             .addComponent(cxUserSobrenome)
                             .addComponent(cxUserNome)))
                     .addComponent(tUserConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -233,18 +231,56 @@ public class TelaAdm extends javax.swing.JFrame {
                 .addGroup(pCadastraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(cxUserRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pCadastraUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(cxUserId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bUserCadastra)
-                .addGap(18, 18, 18)
+                .addGap(58, 58, 58)
                 .addComponent(tUserConfirma)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pCadastroGeral.addTab("Usuário", pCadastraUser);
+
+        jLabel9.setText("Título");
+
+        bCategoriaCadastra.setText("Cadastrar");
+        bCategoriaCadastra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCategoriaCadastraActionPerformed(evt);
+            }
+        });
+
+        tCategoriaConfirma.setText(" ");
+
+        javax.swing.GroupLayout pCategoriaLayout = new javax.swing.GroupLayout(pCategoria);
+        pCategoria.setLayout(pCategoriaLayout);
+        pCategoriaLayout.setHorizontalGroup(
+            pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pCategoriaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pCategoriaLayout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(cxCategoriaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bCategoriaCadastra))
+                    .addComponent(tCategoriaConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(94, Short.MAX_VALUE))
+        );
+        pCategoriaLayout.setVerticalGroup(
+            pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pCategoriaLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(cxCategoriaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bCategoriaCadastra))
+                .addGap(12, 12, 12)
+                .addComponent(tCategoriaConfirma)
+                .addContainerGap(251, Short.MAX_VALUE))
+        );
+
+        pCadastroGeral.addTab("Categoria", pCategoria);
 
         jLabel5.setText("Nome");
 
@@ -269,114 +305,52 @@ public class TelaAdm extends javax.swing.JFrame {
 
         tAutorConfirma.setText("  ");
 
-        jLabel8.setText("ID");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout pCadastraAutorLayout = new javax.swing.GroupLayout(pCadastraAutor);
+        pCadastraAutor.setLayout(pCadastraAutorLayout);
+        pCadastraAutorLayout.setHorizontalGroup(
+            pCadastraAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pCadastraAutorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pCadastraAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(pCadastraAutorLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(41, 41, 41)
                         .addComponent(cxAutorNome))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(bAutorCadastra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tAutorConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))
+                    .addGroup(pCadastraAutorLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cxAutorId, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cxAutorSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cxAutorSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        pCadastraAutorLayout.setVerticalGroup(
+            pCadastraAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pCadastraAutorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pCadastraAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cxAutorNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pCadastraAutorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(cxAutorSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(cxAutorId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bAutorCadastra)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(31, 31, 31)
                 .addComponent(tAutorConfirma)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
-        pCadastroGeral.addTab("Autor", jPanel5);
-
-        jLabel9.setText("Título");
-
-        jLabel10.setText("ID");
-
-        bCategoriaCadastra.setText("Cadastrar");
-        bCategoriaCadastra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCategoriaCadastraActionPerformed(evt);
-            }
-        });
-
-        tCategoriaConfirma.setText(" ");
-
-        javax.swing.GroupLayout pCategoriaLayout = new javax.swing.GroupLayout(pCategoria);
-        pCategoria.setLayout(pCategoriaLayout);
-        pCategoriaLayout.setHorizontalGroup(
-            pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addComponent(bCategoriaCadastra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tCategoriaConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pCategoriaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cxCategoriaId, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                    .addComponent(cxCategoriaTitulo)))
-        );
-        pCategoriaLayout.setVerticalGroup(
-            pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pCategoriaLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(cxCategoriaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(cxCategoriaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bCategoriaCadastra)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tCategoriaConfirma)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pCadastroGeral.addTab("Categoria", pCategoria);
+        pCadastroGeral.addTab("Autor", pCadastraAutor);
 
         jLabel11.setText("Nome do Livro");
-
-        jLabel12.setText("Id");
 
         jLabel13.setText("Autor(es)");
 
@@ -412,6 +386,11 @@ public class TelaAdm extends javax.swing.JFrame {
         tLivroAutoresAdd.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         bLivroCadastrar.setText("Cadastrar");
+        bLivroCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLivroCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pCadastraLivroLayout = new javax.swing.GroupLayout(pCadastraLivro);
         pCadastraLivro.setLayout(pCadastraLivroLayout);
@@ -426,17 +405,15 @@ public class TelaAdm extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pCadastraLivroLayout.createSequentialGroup()
                                 .addGroup(pCadastraLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel13))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(pCadastraLivroLayout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addGap(26, 26, 26)))
                         .addGroup(pCadastraLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cxLivroId, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                             .addComponent(cxLivroNome)
                             .addComponent(lLivrosAutores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lLivrosCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lLivrosCategoria, 0, 119, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pCadastraLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(bLivroAddAutores, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
@@ -444,7 +421,7 @@ public class TelaAdm extends javax.swing.JFrame {
                     .addComponent(tLivroAutoresAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bLivroCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tLivroConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         pCadastraLivroLayout.setVerticalGroup(
             pCadastraLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,10 +430,6 @@ public class TelaAdm extends javax.swing.JFrame {
                 .addGroup(pCadastraLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cxLivroNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pCadastraLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cxLivroId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pCadastraLivroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lLivrosAutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -475,7 +448,7 @@ public class TelaAdm extends javax.swing.JFrame {
                 .addComponent(bLivroCadastrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tLivroConfirma)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         pCadastroGeral.addTab("Livro", pCadastraLivro);
@@ -484,9 +457,7 @@ public class TelaAdm extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(pCadastroGeral)
-                .addContainerGap())
+            .addComponent(pCadastroGeral)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -497,15 +468,203 @@ public class TelaAdm extends javax.swing.JFrame {
 
         pAdm.addTab("Cadastrar", jPanel1);
 
+        lFuncionarioApaga.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionario" }));
+        lFuncionarioApaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lFuncionarioApagaActionPerformed(evt);
+            }
+        });
+
+        bFuncinonarioApaga.setText("Confirmar");
+        bFuncinonarioApaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFuncinonarioApagaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lFuncionarioApaga, 0, 327, Short.MAX_VALUE)
+                    .addComponent(bFuncinonarioApaga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(lFuncionarioApaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bFuncinonarioApaga)
+                .addContainerGap(221, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Funcionário", jPanel3);
+
+        lAutorApaga.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Autor" }));
+        lAutorApaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lAutorApagaActionPerformed(evt);
+            }
+        });
+
+        bAutorApaga.setText("Confirmar");
+        bAutorApaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAutorApagaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lAutorApaga, 0, 327, Short.MAX_VALUE)
+                    .addComponent(bAutorApaga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(lAutorApaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bAutorApaga)
+                .addContainerGap(221, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Autor", jPanel4);
+
+        bUsuarioApaga.setText("Confirmar");
+        bUsuarioApaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bUsuarioApagaActionPerformed(evt);
+            }
+        });
+
+        lUsuarioApaga.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario" }));
+        lUsuarioApaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lUsuarioApagaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lUsuarioApaga, 0, 327, Short.MAX_VALUE)
+                    .addComponent(bUsuarioApaga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(lUsuarioApaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bUsuarioApaga)
+                .addContainerGap(221, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Usuario", jPanel6);
+
+        bCategoriaApaga.setText("Confirmar");
+        bCategoriaApaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCategoriaApagaActionPerformed(evt);
+            }
+        });
+
+        lCategoriaApaga.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria" }));
+        lCategoriaApaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lCategoriaApagaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lCategoriaApaga, 0, 327, Short.MAX_VALUE)
+                    .addComponent(bCategoriaApaga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(lCategoriaApaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bCategoriaApaga)
+                .addContainerGap(221, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Categoria", jPanel7);
+
+        lLivroApaga.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Livro" }));
+        lLivroApaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lLivroApagaActionPerformed(evt);
+            }
+        });
+
+        bLivroApaga.setText("Confirmar");
+        bLivroApaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bLivroApagaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lLivroApaga, 0, 327, Short.MAX_VALUE)
+                    .addComponent(bLivroApaga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(lLivroApaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bLivroApaga)
+                .addContainerGap(221, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Livro", jPanel8);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 339, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 344, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
 
         pAdm.addTab("Excluir", jPanel2);
@@ -529,99 +688,110 @@ public class TelaAdm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastraActionPerformed
+    private void lFuncionarioApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lFuncionarioApagaActionPerformed
         // TODO add your handling code here:
-        String name, sobre,sId,sMatricula;
-        
-        name = cxNome.getText();
-        sobre = cxSobrenome.getText();
-        sId = cxId.getText();
-        sMatricula = cxMatricula.getText();
-        try{
-            int nId = Integer.parseInt(sId);
-            try{
-                int nMat = Integer.parseInt(sMatricula);
-                DAOFuncionario cont = new DAOFuncionario();
-                Funcionario aux = new Funcionario(nId,name,sobre,nMat);
-                cont.incluir(aux);
-                tConfirma.setText("Cadastro confirmado");
-            }catch(NumberFormatException e){        
-                cxMatricula.setText("Valor invalido");      
-            }  
-        }catch(NumberFormatException e){        
-            cxId.setText("Valor invalido"); 
-        }
-        
 
-    }//GEN-LAST:event_bCadastraActionPerformed
+    }//GEN-LAST:event_lFuncionarioApagaActionPerformed
 
-    private void bUserCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUserCadastraActionPerformed
+    private void bFuncinonarioApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFuncinonarioApagaActionPerformed
         // TODO add your handling code here:
-        String name, sobre,sId,sRegistro;
-        name = cxUserNome.getText();
-        sobre = cxUserSobrenome.getText();
-        sId = cxUserId.getText();
-        sRegistro = cxUserRegistro.getText();
-        try{
-            int nId = Integer.parseInt(sId);
-            try{
-                int nReg = Integer.parseInt(sRegistro);
-                var cont = new DAOUsuario();
-                var aux = new Usuario(nId,name,sobre,nReg);
-                cont.incluir(aux);
-                tUserConfirma.setText("Cadastro confirmado");
-            }catch(NumberFormatException e){        
-                cxMatricula.setText("Valor invalido");      
-            }  
-        }catch(NumberFormatException e){        
-            cxUserId.setText("Valor invalido"); 
-        }
+        var oNome = lFuncionarioApaga.getSelectedItem();
+        String nome = oNome.toString();
+        var cont =  new DAOFuncionario();
+        var aux = cont.localizar(nome);
+        cont.remover(aux);
+        lFuncionarioApaga.setSelectedIndex(0);
+        lFuncionarioApaga.removeItem(oNome);
+        
         
 
-    }//GEN-LAST:event_bUserCadastraActionPerformed
+    }//GEN-LAST:event_bFuncinonarioApagaActionPerformed
 
-    private void bAutorCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAutorCadastraActionPerformed
+    private void lAutorApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lAutorApagaActionPerformed
         // TODO add your handling code here:
-        String name, sobre,sId,biografia;
-        name = cxAutorNome.getText();
-        sobre = cxAutorSobrenome.getText();
-        sId = cxAutorId.getText();
-        biografia = cxBiografia.getText();
-       
-        try{
-            int nId = Integer.parseInt(sId);
-            var cont = new DAOAutores();
-            var aux = new Autor(nId,name,sobre,biografia);
-                cont.incluir(aux);
-                tAutorConfirma.setText("Cadastro confirmado");
-                lLivrosAutores.addItem(aux.getNome());
-            }  
-        catch(NumberFormatException e){        
-            cxAutorId.setText("Valor invalido"); 
-        }
-        
+    }//GEN-LAST:event_lAutorApagaActionPerformed
 
-    }//GEN-LAST:event_bAutorCadastraActionPerformed
-
-    private void bCategoriaCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCategoriaCadastraActionPerformed
+    private void bAutorApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAutorApagaActionPerformed
         // TODO add your handling code here:
-        String sId,titulo;
-        titulo = cxCategoriaTitulo.getText();
-        sId = cxCategoriaId.getText();
-       
-        try{
-            int nId = Integer.parseInt(sId);
-            var cont = new DAOCategoria();
-            var aux = new Categoria(nId,titulo);
-                cont.incluir(aux);
-                tCategoriaConfirma.setText("Cadastro confirmado");
-                lLivrosCategoria.addItem(aux.getTitulo());
-            }  
-        catch(NumberFormatException e){        
-            cxCategoriaId.setText("Valor invalido"); 
-        }
+        var oNome = lAutorApaga.getSelectedItem();
+        String nome = oNome.toString();
+        var cont =  new DAOAutores();
+        var aux = cont.localizar(nome);
+        cont.remover(aux);
+        lAutorApaga.setSelectedIndex(0);
+        lAutorApaga.removeItem(oNome);
+    }//GEN-LAST:event_bAutorApagaActionPerformed
+
+    private void bUsuarioApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUsuarioApagaActionPerformed
+        // TODO add your handling code here:
+        var oNome = lUsuarioApaga.getSelectedItem();
+        String nome = oNome.toString();
+        var cont =  new DAOUsuario();
+        var aux = cont.localizar(nome);
+        cont.remover(aux);
         
-    }//GEN-LAST:event_bCategoriaCadastraActionPerformed
+    }//GEN-LAST:event_bUsuarioApagaActionPerformed
+
+    private void lUsuarioApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lUsuarioApagaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lUsuarioApagaActionPerformed
+
+    private void bCategoriaApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCategoriaApagaActionPerformed
+        // TODO add your handling code here:
+        var oNome = lCategoriaApaga.getSelectedItem();
+        String nome = oNome.toString();
+        var cont =  new DAOCategoria();
+        var aux = cont.localizar(nome);
+        cont.remover(aux);
+    }//GEN-LAST:event_bCategoriaApagaActionPerformed
+
+    private void lCategoriaApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lCategoriaApagaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lCategoriaApagaActionPerformed
+
+    private void lLivroApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lLivroApagaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lLivroApagaActionPerformed
+
+    private void bLivroApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLivroApagaActionPerformed
+        // TODO add your handling code here:
+        var oNome = lLivroApaga.getSelectedItem();
+        String nome = oNome.toString();
+        var cont =  new DAOLivro();
+        var aux = cont.localizar(nome);
+        cont.remover(aux);
+    }//GEN-LAST:event_bLivroApagaActionPerformed
+
+    private void bLivroCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLivroCadastrarActionPerformed
+        // TODO add your handling code here:
+        String nome = cxLivroNome.getText();
+        var livro = new Livro(nome);
+        var cont = new DAOAutores();
+        var contCat = new DAOCategoria();
+        ArrayList<Autor> listaAutores = cont.getLista();
+        ArrayList<Categoria> listaCategoria = contCat.getLista();
+        livro.CopiaAutores(listaAutores);
+        livro.CopiaCategorias(listaCategoria);
+        AutoresProv.clear();
+        CategoriaProv.clear();
+        tLivroConfirma.setText("Livro adicionado");
+        lLivroApaga.addItem(livro.getTitulo());
+    }//GEN-LAST:event_bLivroCadastrarActionPerformed
+
+    private void bLivroAddCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLivroAddCategoriaActionPerformed
+        // TODO add your handling code here:
+        int index  = lLivrosCategoria.getSelectedIndex() - 1;
+        var cont = new DAOCategoria();
+        var aux =cont.localizar(index);
+        CategoriaProv.add(aux);
+        String nomes = "";
+        for(Categoria categoria : CategoriaProv){
+            nomes += categoria.getTitulo() + ", ";
+        }
+        String total = "Categorias(es) adicionada(s): " + nomes;
+        tLivroCategoriaAdd.setText(total);
+
+    }//GEN-LAST:event_bLivroAddCategoriaActionPerformed
 
     private void bLivroAddAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLivroAddAutoresActionPerformed
         // TODO add your handling code here:
@@ -642,20 +812,71 @@ public class TelaAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lLivrosAutoresActionPerformed
 
-    private void bLivroAddCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLivroAddCategoriaActionPerformed
+    private void bAutorCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAutorCadastraActionPerformed
         // TODO add your handling code here:
-        int index  = lLivrosCategoria.getSelectedIndex() - 1;
+        String name, sobre,biografia;
+        name = cxAutorNome.getText();
+        sobre = cxAutorSobrenome.getText();
+        biografia = cxBiografia.getText();
+        var cont = new DAOAutores();
+        var aux = new Autor(name,sobre,biografia);
+        cont.incluir(aux);
+        tAutorConfirma.setText("Cadastro confirmado");
+        lLivrosAutores.addItem(aux.getNome());
+        lAutorApaga.addItem(aux.getNome());
+    }//GEN-LAST:event_bAutorCadastraActionPerformed
+
+    private void bCategoriaCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCategoriaCadastraActionPerformed
+        // TODO add your handling code here:
+        String titulo;
+        titulo = cxCategoriaTitulo.getText();
+
         var cont = new DAOCategoria();
-        var aux =cont.localizar(index);
-        CategoriaProv.add(aux);
-        String nomes = "";
-        for(Categoria categoria : CategoriaProv){
-            nomes += categoria.getTitulo() + ", ";
+        var aux = new Categoria(titulo);
+        cont.incluir(aux);
+        tCategoriaConfirma.setText("Cadastro confirmado");
+        lLivrosCategoria.addItem(aux.getTitulo());
+        lCategoriaApaga.addItem(aux.getTitulo());
+
+    }//GEN-LAST:event_bCategoriaCadastraActionPerformed
+
+    private void bUserCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUserCadastraActionPerformed
+        // TODO add your handling code here:
+        String name, sobre,sRegistro;
+        name = cxUserNome.getText();
+        sobre = cxUserSobrenome.getText();
+
+        sRegistro = cxUserRegistro.getText();
+        try{
+            int nReg = Integer.parseInt(sRegistro);
+            var cont = new DAOUsuario();
+            var aux = new Usuario(name,sobre,nReg);
+            cont.incluir(aux);
+            tUserConfirma.setText("Cadastro confirmado");
+            lUsuarioApaga.addItem(aux.getNome());
+        }catch(NumberFormatException e){
+            cxMatricula.setText("Valor invalido");
         }
-        String total = "Categorias(es) adicionada(s): " + nomes;
-        tLivroCategoriaAdd.setText(total);
-        
-    }//GEN-LAST:event_bLivroAddCategoriaActionPerformed
+    }//GEN-LAST:event_bUserCadastraActionPerformed
+
+    private void bCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastraActionPerformed
+        // TODO add your handling code here:
+        String name, sobre,sMatricula;
+
+        name = cxNome.getText();
+        sobre = cxSobrenome.getText();
+        sMatricula = cxMatricula.getText();
+        try{
+            int nMat = Integer.parseInt(sMatricula);
+            DAOFuncionario cont = new DAOFuncionario();
+            Funcionario aux = new Funcionario(name,sobre,nMat);
+            cont.incluir(aux);
+            lFuncionarioApaga.addItem(aux.getNome());
+            tConfirma.setText("Cadastro confirmado");
+        }catch(NumberFormatException e){
+            cxMatricula.setText("Valor invalido");
+        }
+    }//GEN-LAST:event_bCadastraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -693,50 +914,57 @@ public class TelaAdm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAutorApaga;
     private javax.swing.JButton bAutorCadastra;
     private javax.swing.JButton bCadastra;
+    private javax.swing.JButton bCategoriaApaga;
     private javax.swing.JButton bCategoriaCadastra;
+    private javax.swing.JButton bFuncinonarioApaga;
     private javax.swing.JButton bLivroAddAutores;
     private javax.swing.JButton bLivroAddCategoria;
+    private javax.swing.JButton bLivroApaga;
     private javax.swing.JButton bLivroCadastrar;
     private javax.swing.JButton bUserCadastra;
-    private javax.swing.JTextField cxAutorId;
+    private javax.swing.JButton bUsuarioApaga;
     private javax.swing.JTextField cxAutorNome;
     private javax.swing.JTextField cxAutorSobrenome;
     private javax.swing.JTextArea cxBiografia;
-    private javax.swing.JTextField cxCategoriaId;
     private javax.swing.JTextField cxCategoriaTitulo;
-    private javax.swing.JTextField cxId;
-    private javax.swing.JTextField cxLivroId;
     private javax.swing.JTextField cxLivroNome;
     private javax.swing.JTextField cxMatricula;
     private javax.swing.JTextField cxNome;
     private javax.swing.JTextField cxSobrenome;
-    private javax.swing.JTextField cxUserId;
     private javax.swing.JTextField cxUserNome;
     private javax.swing.JTextField cxUserRegistro;
     private javax.swing.JTextField cxUserSobrenome;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> lAutorApaga;
+    private javax.swing.JComboBox<String> lCategoriaApaga;
+    private javax.swing.JComboBox<String> lFuncionarioApaga;
+    private javax.swing.JComboBox<String> lLivroApaga;
     private javax.swing.JComboBox<String> lLivrosAutores;
     private javax.swing.JComboBox<String> lLivrosCategoria;
+    private javax.swing.JComboBox<String> lUsuarioApaga;
     private javax.swing.JTabbedPane pAdm;
+    private javax.swing.JPanel pCadastraAutor;
     private javax.swing.JPanel pCadastraLivro;
     private javax.swing.JPanel pCadastraUser;
     private javax.swing.JPanel pCadastroFunc;
@@ -745,7 +973,6 @@ public class TelaAdm extends javax.swing.JFrame {
     private javax.swing.JLabel tAutorConfirma;
     private javax.swing.JLabel tCategoriaConfirma;
     private javax.swing.JLabel tConfirma;
-    private javax.swing.JLabel tId;
     private javax.swing.JLabel tLivroAutoresAdd;
     private javax.swing.JLabel tLivroCategoriaAdd;
     private javax.swing.JLabel tLivroConfirma;

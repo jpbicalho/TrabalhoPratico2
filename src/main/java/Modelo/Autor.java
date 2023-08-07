@@ -10,13 +10,13 @@ package Modelo;
  */
 public class Autor extends Pessoa{
     private String biografia;
-    public Autor(int i,String name,String nickname,String bio){
-        super(i,name,nickname);
+    public Autor(String name,String nickname,String bio){
+        super(name,nickname);
         biografia = bio;
     }
 
     public Autor() {
-        super(0,"","");
+        super("","");
         biografia = "";
     }
     public void setBiografia(String bio){

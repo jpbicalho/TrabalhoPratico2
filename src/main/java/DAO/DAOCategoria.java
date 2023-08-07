@@ -3,6 +3,7 @@ package DAO;
 
 
 import Modelo.Categoria;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -50,7 +51,7 @@ public class DAOCategoria implements DAOInterface<Categoria>{
     }
     
     @Override
-    public List<Categoria> getLista(){
-        return Dados.Dados.categorias;
+    public ArrayList<Categoria> getLista(){
+        return (ArrayList<Categoria>) Dados.Dados.categorias;
     }
 }

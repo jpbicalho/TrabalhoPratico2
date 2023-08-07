@@ -10,8 +10,8 @@ package Modelo;
  */
 public class Funcionario extends Pessoa {
     private int matricula;
-    public Funcionario(int i,String name,String nickname,int mat){
-        super(i,name,nickname);
+    public Funcionario(String name,String nickname,int mat){
+        super(name,nickname);
         matricula = mat;
     }
     public void setMatricula(int mat){
@@ -22,18 +22,21 @@ public class Funcionario extends Pessoa {
     }
     @Override
     public String toString(){
-        return super.toString() + "Matricula: " + matricula;
+        return super.toString() + " Matricula: " + matricula;
     }
     
     public boolean equals(Funcionario f){
         if( f instanceof Funcionario){
             if(this.matricula == f.getMatricula()){
-                return false;
-        }else{ 
-                return false;
-        
+                if(this.getId() == f.getId()){
+                    if(this.getNome().equals(f.getNome())){
+                        if(this.getSobrenome().equals(f.getSobrenome())){
+                            return true;
+                        }
+                    }
+                }
             }
         }
-        return false;
+       return false;
     }
 }

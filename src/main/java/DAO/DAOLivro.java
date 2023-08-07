@@ -25,6 +25,15 @@ public class DAOLivro implements DAOInterface<Livro>{
         
         return null;
     }
+    public Livro localizar(String nome){
+        for(int i=0;i< Dados.Dados.livros.size();i++){
+            if(nome == Dados.Dados.livros.get(i).getTitulo()){
+                return Dados.Dados.livros.get(i);
+        }
+        
+        }
+        return null;
+    }
     @Override
     public void atualizar(Livro t){
         //Dados.Dados.livros.set(t.getId(),t);
