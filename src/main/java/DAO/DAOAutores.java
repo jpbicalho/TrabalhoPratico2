@@ -47,4 +47,9 @@ public class DAOAutores implements DAOInterface<Autor>{
     public ArrayList<Autor> getLista(){
         return (ArrayList<Autor>) Dados.Dados.autores;
     }
+    
+    public boolean validaCriacao(Autor a){
+        return true;
+        
+    }
 }

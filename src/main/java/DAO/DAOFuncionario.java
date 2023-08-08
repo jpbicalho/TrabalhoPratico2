@@ -18,11 +18,7 @@ public class DAOFuncionario implements DAOInterface<Funcionario> {
     public void incluir(Funcionario func){
         Dados.Dados.funcionarios.add(func);
     }
-    @Override
-    public Funcionario localizar(int id){
-        
-        return Dados.Dados.funcionarios.get(id);
-    }
+
     public Funcionario localizar(Funcionario func){
         var mat = func.getMatricula();
         for(int i=0;i< Dados.Dados.funcionarios.size() ;i++){
@@ -55,5 +51,21 @@ public class DAOFuncionario implements DAOInterface<Funcionario> {
     @Override
     public List<Funcionario> getLista(){
         return Dados.Dados.funcionarios;
+    }
+    
+    public boolean validaCriacao(Funcionario func){
+        return  localizar(func) ==  null;
+        
+    }
+
+    @Override
+    public Funcionario localizar(int mat) {
+        for(int i=0;i<Dados.Dados.funcionarios.size();i++){
+            int comparaMat = Dados.Dados.funcionarios.get(i).getMatricula();
+            if(comparaMat == mat){
+                return Dados.Dados.funcionarios.get(i);
+            }
+        }
+        return null;
     }
 }

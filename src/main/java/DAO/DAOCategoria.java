@@ -19,7 +19,9 @@ public class DAOCategoria implements DAOInterface<Categoria>{
     public DAOCategoria(){}
     @Override
     public void incluir(Categoria func){
+        if(validaCriacao(func) == true){
         Dados.Dados.categorias.add(func);
+        }
     }
     
     @Override
@@ -31,8 +33,10 @@ public class DAOCategoria implements DAOInterface<Categoria>{
     }
     
     public Categoria localizar(String nome){
+        String nomeLista;
         for(int i=0;i<Dados.Dados.categorias.size();i++){
-            if(Dados.Dados.categorias.get(i).getTitulo() == nome){
+            nomeLista = Dados.Dados.categorias.get(i).getTitulo();
+            if(nome.equals(nomeLista)){
                 return Dados.Dados.categorias.get(i);
             }
         }
@@ -53,5 +57,12 @@ public class DAOCategoria implements DAOInterface<Categoria>{
     @Override
     public ArrayList<Categoria> getLista(){
         return (ArrayList<Categoria>) Dados.Dados.categorias;
+    }
+//    funcao que retorna verdadeiro se nao encontrar o nome
+    
+    public boolean validaCriacao(Categoria nCat){
+       String title = nCat.getTitulo();
+        return localizar(title) == null;
+       
     }
 }

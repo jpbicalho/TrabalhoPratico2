@@ -22,7 +22,7 @@ public class DAOUsuario implements DAOInterface<Usuario>{
     @Override
     public Usuario localizar(int id){
         for(int i=0;i<Dados.Dados.users.size();i++){
-            if(Dados.Dados.users.get(i).getId() == id){
+            if(Dados.Dados.users.get(i).getRegistroAcademico() == id){
                 return Dados.Dados.users.get(i);
             }
         }

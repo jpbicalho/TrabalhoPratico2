@@ -30,5 +30,10 @@ public class Categoria {
     public void setTitulo(String title){
         titulo = title;
     }
+    public String toString(){
+        var sId=String.valueOf(id);
+        return titulo + "," + sId;
+    }
+    
 }
 

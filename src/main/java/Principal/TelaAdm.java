@@ -257,14 +257,14 @@ public class TelaAdm extends javax.swing.JFrame {
             pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pCategoriaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pCategoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(tCategoriaConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pCategoriaLayout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(cxCategoriaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(bCategoriaCadastra))
-                    .addComponent(tCategoriaConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bCategoriaCadastra)))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
         pCategoriaLayout.setVerticalGroup(
@@ -720,6 +720,8 @@ public class TelaAdm extends javax.swing.JFrame {
         cont.remover(aux);
         lAutorApaga.setSelectedIndex(0);
         lAutorApaga.removeItem(oNome);
+        lLivrosAutores.setSelectedIndex(0);
+        lLivrosAutores.removeItem(oNome);
     }//GEN-LAST:event_bAutorApagaActionPerformed
 
     private void bUsuarioApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUsuarioApagaActionPerformed
@@ -729,6 +731,8 @@ public class TelaAdm extends javax.swing.JFrame {
         var cont =  new DAOUsuario();
         var aux = cont.localizar(nome);
         cont.remover(aux);
+        lUsuarioApaga.setSelectedIndex(0);
+        lUsuarioApaga.removeItem(oNome);
         
     }//GEN-LAST:event_bUsuarioApagaActionPerformed
 
@@ -743,6 +747,10 @@ public class TelaAdm extends javax.swing.JFrame {
         var cont =  new DAOCategoria();
         var aux = cont.localizar(nome);
         cont.remover(aux);
+        lCategoriaApaga.setSelectedIndex(0);
+        lCategoriaApaga.removeItem(oNome);
+        lLivrosCategoria.setSelectedIndex(0);
+        lLivrosCategoria.removeItem(oNome);
     }//GEN-LAST:event_bCategoriaApagaActionPerformed
 
     private void lCategoriaApagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lCategoriaApagaActionPerformed
@@ -760,6 +768,12 @@ public class TelaAdm extends javax.swing.JFrame {
         var cont =  new DAOLivro();
         var aux = cont.localizar(nome);
         cont.remover(aux);
+        lLivroApaga.setSelectedIndex(0);
+        lLivroApaga.removeItem(oNome);
+
+
+        
+
     }//GEN-LAST:event_bLivroApagaActionPerformed
 
     private void bLivroCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLivroCadastrarActionPerformed
@@ -830,13 +844,20 @@ public class TelaAdm extends javax.swing.JFrame {
         // TODO add your handling code here:
         String titulo;
         titulo = cxCategoriaTitulo.getText();
-
-        var cont = new DAOCategoria();
-        var aux = new Categoria(titulo);
-        cont.incluir(aux);
-        tCategoriaConfirma.setText("Cadastro confirmado");
-        lLivrosCategoria.addItem(aux.getTitulo());
-        lCategoriaApaga.addItem(aux.getTitulo());
+        var controller = new DAOCategoria();
+        Categoria novo = controller.localizar(titulo);
+        if(novo == null){
+            Categoria adiciona = new Categoria(titulo);
+            controller.incluir(adiciona);
+            lLivrosCategoria.addItem(adiciona.getTitulo());
+            tCategoriaConfirma.setText("Categoria cadastrada");
+            lCategoriaApaga.addItem(adiciona.getTitulo());
+            
+        }else{
+            tCategoriaConfirma.setText("Título já existe, digite outro");
+        }
+        
+        
 
     }//GEN-LAST:event_bCategoriaCadastraActionPerformed
 
@@ -851,9 +872,14 @@ public class TelaAdm extends javax.swing.JFrame {
             int nReg = Integer.parseInt(sRegistro);
             var cont = new DAOUsuario();
             var aux = new Usuario(name,sobre,nReg);
-            cont.incluir(aux);
-            tUserConfirma.setText("Cadastro confirmado");
-            lUsuarioApaga.addItem(aux.getNome());
+            if(cont.localizar(nReg) == null){
+                cont.incluir(aux);
+                tUserConfirma.setText("Cadastro confirmado");
+                lUsuarioApaga.addItem(aux.getNome());
+            }else{
+                tUserConfirma.setText("Numero de registro ja existente");
+            }
+            
         }catch(NumberFormatException e){
             cxMatricula.setText("Valor invalido");
         }
@@ -870,9 +896,13 @@ public class TelaAdm extends javax.swing.JFrame {
             int nMat = Integer.parseInt(sMatricula);
             DAOFuncionario cont = new DAOFuncionario();
             Funcionario aux = new Funcionario(name,sobre,nMat);
-            cont.incluir(aux);
-            lFuncionarioApaga.addItem(aux.getNome());
-            tConfirma.setText("Cadastro confirmado");
+            if(cont.localizar(aux) ==  null){
+                cont.incluir(aux);
+                lFuncionarioApaga.addItem(aux.getNome());
+                tConfirma.setText("Cadastro confirmado");
+            }else{
+                tConfirma.setText("Matricula ja existente");
+            }
         }catch(NumberFormatException e){
             cxMatricula.setText("Valor invalido");
         }
