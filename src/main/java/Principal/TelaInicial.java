@@ -35,7 +35,7 @@ public class TelaInicial extends javax.swing.JFrame {
         txtEntrada.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtEntrada.setText("Selecione o modo de entrada");
 
-        lModos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Modo Funcionário", "Modo Administrador" }));
+        lModos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Modo Funcionário", "Modo Administrador", "Modo Usuário" }));
 
         bConfirma.setText("Confirmar");
         bConfirma.addActionListener(new java.awt.event.ActionListener() {
@@ -76,9 +76,17 @@ public class TelaInicial extends javax.swing.JFrame {
     private void bConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmaActionPerformed
         // TODO add your handling code here:
         int mode = lModos.getSelectedIndex();
+        if(mode == 1){
+            TelaFuncionario func = new TelaFuncionario();
+            func.setVisible(true);
+        }
         if (mode == 2){
             TelaAdm adm= new TelaAdm();
             adm.setVisible(true);
+        }
+        if (mode == 3){
+            TelaUsuario user = new TelaUsuario();
+            user.setVisible(true);
         }
     }//GEN-LAST:event_bConfirmaActionPerformed
 

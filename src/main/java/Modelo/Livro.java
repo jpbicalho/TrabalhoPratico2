@@ -53,5 +53,22 @@ public class Livro {
     public List<Autor> getAutores(){
         return autores;
     }
+    public List<Categoria> getCategorias(){
+        return categorias;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder concatena = new StringBuilder();
+        for(Autor aut : autores){
+            concatena.append(aut.getNome()).append(", ");
+        }
+        var concatCat = new StringBuilder();
+        for(Categoria cat : categorias){
+            concatCat.append(cat.getTitulo()).append(", ");
+        }
+        return getTitulo() + concatena + concatCat;
+    }
+   
     
 }

@@ -16,6 +16,7 @@ import Modelo.Livro;
 import Modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import Principal.TelaUsuario;
 
 /**
  *
@@ -109,7 +110,7 @@ public class TelaAdm extends javax.swing.JFrame {
         lLivroApaga = new javax.swing.JComboBox<>();
         bLivroApaga = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tNome.setText("Nome");
 
@@ -181,10 +182,6 @@ public class TelaAdm extends javax.swing.JFrame {
         jLabel2.setText("Sobrenome");
 
         jLabel3.setText("Registro");
-
-        cxUserSobrenome.setText(" ");
-
-        cxUserNome.setText(" ");
 
         bUserCadastra.setText("Cadastrar");
         bUserCadastra.addActionListener(new java.awt.event.ActionListener() {
@@ -779,13 +776,15 @@ public class TelaAdm extends javax.swing.JFrame {
     private void bLivroCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLivroCadastrarActionPerformed
         // TODO add your handling code here:
         String nome = cxLivroNome.getText();
-        var livro = new Livro(nome);
+        Livro livro = new Livro(nome);
         var cont = new DAOAutores();
         var contCat = new DAOCategoria();
+        var contLivro = new DAOLivro();
         ArrayList<Autor> listaAutores = cont.getLista();
         ArrayList<Categoria> listaCategoria = contCat.getLista();
         livro.CopiaAutores(listaAutores);
         livro.CopiaCategorias(listaCategoria);
+        contLivro.incluir(livro);
         AutoresProv.clear();
         CategoriaProv.clear();
         tLivroConfirma.setText("Livro adicionado");
@@ -794,9 +793,10 @@ public class TelaAdm extends javax.swing.JFrame {
 
     private void bLivroAddCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLivroAddCategoriaActionPerformed
         // TODO add your handling code here:
-        int index  = lLivrosCategoria.getSelectedIndex() - 1;
+        Object oNome = lLivrosCategoria.getSelectedItem();
+        String sNome = oNome.toString();
         var cont = new DAOCategoria();
-        var aux =cont.localizar(index);
+        var aux =cont.localizar(sNome);
         CategoriaProv.add(aux);
         String nomes = "";
         for(Categoria categoria : CategoriaProv){
@@ -810,9 +810,10 @@ public class TelaAdm extends javax.swing.JFrame {
     private void bLivroAddAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLivroAddAutoresActionPerformed
         // TODO add your handling code here:
         // Valor subtraido 1 por causa do valor default
-        int index  = lLivrosAutores.getSelectedIndex() - 1;
+        Object oNome  = lLivrosAutores.getSelectedItem();
+        String Snome = oNome.toString();
         var cont = new DAOAutores();
-        var aux =cont.localizar(index);
+        var aux =cont.localizar(Snome);
         AutoresProv.add(aux);
         String nomes = "";
         for(Autor autor : AutoresProv){

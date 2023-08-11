@@ -11,9 +11,9 @@ package Modelo;
 public class Data {
     private int dia;
     private int mes;
-    Data(int day, int month){
-        int dia = day;
-        int mes = month;
+    public Data(int day, int month){
+        setDia(day);
+        setMes(month);
     }
     public void setDia(int n){
         dia = n;
@@ -26,5 +26,13 @@ public class Data {
     }
     public int getMes(){
         return mes;
+    }
+    public String toString(){
+        int nDia = getDia();
+        int nMes = getMes();
+        String sDia = String.valueOf(nDia);
+        String sMes = String.valueOf(nMes);
+        return sDia + "/" + sMes;
+                
     }
 }

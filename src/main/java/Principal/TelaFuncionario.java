@@ -4,6 +4,18 @@
  */
 package Principal;
 
+import DAO.DAOEmprestimo;
+import DAO.DAOFuncionario;
+import DAO.DAOLivro;
+import DAO.DAOUsuario;
+import Modelo.Data;
+import Modelo.Emprestimo;
+import Modelo.Funcionario;
+import Modelo.Livro;
+import Modelo.Usuario;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author joaop
@@ -15,7 +27,27 @@ public class TelaFuncionario extends javax.swing.JFrame {
      */
     public TelaFuncionario() {
         initComponents();
+        adicionaItensCombobox();
     }
+    public void adicionaItensCombobox(){
+        var cont = new DAOFuncionario();
+        var lista = (ArrayList<Funcionario>) cont.getLista();
+        for(Funcionario func : lista){
+            lEmprestimoFuncionario.addItem(func.getNome());
+        }
+        var contLivro = new DAOLivro();
+        ArrayList<Livro> listaLivro = (ArrayList<Livro>) contLivro.getLista();
+        for(Livro liv :  listaLivro){
+            lEmprestimoLivro.addItem(liv.getTitulo());
+        }
+        var contUser = new DAOUsuario();
+        ArrayList<Usuario> listaUser = (ArrayList<Usuario>) contUser.getLista();
+        for(Usuario user :  listaUser){
+            lEmprestimoUsuario.addItem(user.getNome());
+        }
+    
+            
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +58,215 @@ public class TelaFuncionario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        tEmprestimoDia = new javax.swing.JTextField();
+        lEmprestimoUsuario = new javax.swing.JComboBox<>();
+        lEmprestimoFuncionario = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        tMensagemErro = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        tEmprestimoMes = new javax.swing.JTextField();
+        bEmprestimoCadastra = new javax.swing.JButton();
+        lEmprestimoLivro = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tEmprestimos = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tEmprestimoDia.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tEmprestimoDia.setText("dia");
+        tEmprestimoDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tEmprestimoDiaActionPerformed(evt);
+            }
+        });
+
+        lEmprestimoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lEmprestimoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario" }));
+
+        lEmprestimoFuncionario.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lEmprestimoFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Funcionarios" }));
+
+        jLabel3.setText("Usuário:");
+
+        jLabel5.setText("Data:");
+
+        jLabel2.setText("Funcionário:");
+
+        jLabel4.setText("Livro:");
+
+        tEmprestimoMes.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        tEmprestimoMes.setText("mês");
+        tEmprestimoMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tEmprestimoMesActionPerformed(evt);
+            }
+        });
+
+        bEmprestimoCadastra.setText("Confirma");
+        bEmprestimoCadastra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEmprestimoCadastraActionPerformed(evt);
+            }
+        });
+
+        lEmprestimoLivro.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lEmprestimoLivro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Livro" }));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(bEmprestimoCadastra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(42, 42, 42))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(tEmprestimoDia, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tEmprestimoMes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lEmprestimoFuncionario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lEmprestimoUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lEmprestimoLivro, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(tMensagemErro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lEmprestimoFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lEmprestimoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lEmprestimoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tEmprestimoDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tEmprestimoMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bEmprestimoCadastra, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tMensagemErro, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Cadastros", jPanel1);
+
+        tEmprestimos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Livro", "Usuário", "Funcionário", "Data"
+            }
+        ));
+        jScrollPane1.setViewportView(tEmprestimos);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Visualizar", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tEmprestimoDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tEmprestimoDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tEmprestimoDiaActionPerformed
+
+    private void tEmprestimoMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tEmprestimoMesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tEmprestimoMesActionPerformed
+
+    private void bEmprestimoCadastraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmprestimoCadastraActionPerformed
+        // TODO add your handling code here:
+        //cria um emprestimo e mostra na tabela
+        Object oTitulo = lEmprestimoLivro.getSelectedItem();
+        Object oNomeUser = lEmprestimoUsuario.getSelectedItem();
+        Object oNomeFunc = lEmprestimoFuncionario.getSelectedItem();
+        var titulo = oTitulo.toString();
+        var nomeUser = oNomeUser.toString();
+        var nomeFunc = oNomeFunc.toString();
+        try{
+            String sDia = tEmprestimoDia.getText();
+            String sMes = tEmprestimoMes.getText();
+            
+            int dia = Integer.parseInt(sDia);
+            int mes = Integer.parseInt(sMes);
+            
+            Data nData = new Data(dia,mes);
+            var cLivro = new DAOLivro();
+            Livro nLivro = cLivro.localizar(titulo);
+            var cUsuario = new DAOUsuario();
+            Usuario nUser = cUsuario.localizar(nomeUser);
+            var cFuncionario = new DAOFuncionario();
+            Funcionario nFunc = cFuncionario.localizar(nomeFunc);
+            Emprestimo novo = new Emprestimo(nFunc.getId(),nUser.getId(),nLivro.getId(),nData);
+            var nEmp = new DAOEmprestimo();
+            nEmp.incluir(novo);
+            DefaultTableModel tabelaEmprestimos = (DefaultTableModel)tEmprestimos.getModel();
+            Object[] dados = {nLivro.getTitulo(),
+                             nUser.getNome() + " " + nUser.getSobrenome(),
+                             nFunc.getNome() + " " + nFunc.getSobrenome(),
+                             nData.toString()};
+            tabelaEmprestimos.addRow(dados);
+        }catch(NumberFormatException e){
+            tMensagemErro.setText("Valor inválido");
+        }
+        
+    }//GEN-LAST:event_bEmprestimoCadastraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +304,21 @@ public class TelaFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bEmprestimoCadastra;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> lEmprestimoFuncionario;
+    private javax.swing.JComboBox<String> lEmprestimoLivro;
+    private javax.swing.JComboBox<String> lEmprestimoUsuario;
+    private javax.swing.JTextField tEmprestimoDia;
+    private javax.swing.JTextField tEmprestimoMes;
+    private javax.swing.JTable tEmprestimos;
+    private javax.swing.JLabel tMensagemErro;
     // End of variables declaration//GEN-END:variables
 }

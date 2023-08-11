@@ -2,7 +2,7 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -259,16 +259,10 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="cxUserSobrenome">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value=" "/>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="cxUserRegistro">
                     </Component>
                     <Component class="javax.swing.JTextField" name="cxUserNome">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value=" "/>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="bUserCadastra">
                       <Properties>

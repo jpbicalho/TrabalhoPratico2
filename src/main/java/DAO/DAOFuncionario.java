@@ -59,10 +59,11 @@ public class DAOFuncionario implements DAOInterface<Funcionario> {
     }
 
     @Override
-    public Funcionario localizar(int mat) {
+    public Funcionario localizar(int id){
+        //localiza um funcionario por meio de seu ID
         for(int i=0;i<Dados.Dados.funcionarios.size();i++){
-            int comparaMat = Dados.Dados.funcionarios.get(i).getMatricula();
-            if(comparaMat == mat){
+            int comparaId = Dados.Dados.funcionarios.get(i).getId();
+            if(comparaId == id){
                 return Dados.Dados.funcionarios.get(i);
             }
         }

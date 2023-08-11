@@ -21,8 +21,9 @@ public class DAOUsuario implements DAOInterface<Usuario>{
     
     @Override
     public Usuario localizar(int id){
+        //localizar um usuario com base no seu codigo id
         for(int i=0;i<Dados.Dados.users.size();i++){
-            if(Dados.Dados.users.get(i).getRegistroAcademico() == id){
+            if(Dados.Dados.users.get(i).getId() == id){
                 return Dados.Dados.users.get(i);
             }
         }

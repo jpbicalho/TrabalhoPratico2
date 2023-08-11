@@ -5,6 +5,7 @@
 package DAO;
 import java.util.List;
 import Modelo.Livro;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,12 +27,13 @@ public class DAOLivro implements DAOInterface<Livro>{
         return null;
     }
     public Livro localizar(String nome){
-        for(int i=0;i< Dados.Dados.livros.size();i++){
-            if(nome == Dados.Dados.livros.get(i).getTitulo()){
-                return Dados.Dados.livros.get(i);
+        var lista = new ArrayList<>(getLista());
+        for(Livro liv : lista){
+            if(liv.getTitulo().equalsIgnoreCase(nome)){
+                return liv;
+            }
         }
         
-        }
         return null;
     }
     @Override
